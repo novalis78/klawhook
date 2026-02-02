@@ -1,18 +1,18 @@
-/* KeyHook Global Styles */
+/* KlawHook Global Styles */
 
 :root {
     --bg-primary: #0a0a0f;
     --bg-secondary: #12121a;
     --bg-card: #1a1a24;
-    --text-primary: #ffffff;
-    --text-secondary: #a0a0b0;
-    --text-muted: #6b6b7b;
-    --accent-primary: #10b981; /* Webhook green */
-    --accent-secondary: #34d399;
-    --accent-hook: #8b5cf6; /* Purple for hooks */
+    --text-primary: #f5f5f7;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --accent-primary: #f59e0b; /* Amber */
+    --accent-secondary: #8b5cf6; /* Purple */
+    --accent-hook: #10b981; /* Green for hooks */
     --accent-nostr: #f97316; /* Orange for Nostr */
-    --border-color: #2a2a3a;
-    --success: #00c853;
+    --border-color: #30303d;
+    --success: #10b981;
     --code-bg: #0d0d12;
 }
 
@@ -27,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
@@ -56,14 +56,14 @@ a:hover {
 }
 
 .btn-primary {
-    background: var(--accent-primary);
-    color: var(--bg-primary);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    font-weight: 600;
 }
 
 .btn-primary:hover {
-    background: var(--accent-secondary);
-    color: var(--bg-primary);
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(245, 158, 11, 0.4);
 }
 
 .btn-secondary {
