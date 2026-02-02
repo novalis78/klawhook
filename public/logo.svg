@@ -1,0 +1,27 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#0a0a0f"/>
+
+  <!-- Hook shape - incoming webhook arrow -->
+  <path d="M128 192C128 174.327 142.327 160 160 160H224C241.673 160 256 174.327 256 192V224"
+        stroke="#10b981" stroke-width="24" stroke-linecap="round"/>
+
+  <!-- Hook shape - outgoing to agent -->
+  <path d="M256 224V320C256 337.673 270.327 352 288 352H352C369.673 352 384 337.673 384 320V288"
+        stroke="#8b5cf6" stroke-width="24" stroke-linecap="round"/>
+
+  <!-- Central connection point -->
+  <circle cx="256" cy="224" r="40" fill="#10b981"/>
+
+  <!-- Vertical connector -->
+  <path d="M256 264V352" stroke="#10b981" stroke-width="24"/>
+
+  <!-- Agent endpoint -->
+  <circle cx="256" cy="384" r="32" fill="#8b5cf6"/>
+
+  <!-- Incoming arrow head -->
+  <path d="M104 192L144 160L144 224L104 192Z" fill="#10b981"/>
+
+  <!-- Outgoing arrow head -->
+  <path d="M408 288L368 256L368 320L408 288Z" fill="#8b5cf6"/>
+</svg>

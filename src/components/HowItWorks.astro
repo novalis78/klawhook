@@ -1,0 +1,204 @@
+---
+---
+<section id="how-it-works" class="how-it-works">
+    <div class="how-header">
+        <h2>How It Works</h2>
+        <p>From webhook to agent in 3 delivery modes</p>
+    </div>
+
+    <div class="flow-diagram">
+        <div class="flow-step source">
+            <div class="step-icon">🌐</div>
+            <h4>External Service</h4>
+            <p>GitHub, Stripe, KeySpark, or any webhook sender</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step keyhook">
+            <div class="step-icon">🪝</div>
+            <h4>KeyHook</h4>
+            <p>api.keyhook.world/webhook/{'{'}id{'}'}</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step delivery">
+            <div class="delivery-options">
+                <div class="delivery-option">
+                    <span class="option-icon">💬</span>
+                    <span>Nostr DM</span>
+                </div>
+                <div class="delivery-option">
+                    <span class="option-icon">📧</span>
+                    <span>Email</span>
+                </div>
+                <div class="delivery-option">
+                    <span class="option-icon">📋</span>
+                    <span>Poll Queue</span>
+                </div>
+            </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step agent">
+            <div class="step-icon">🤖</div>
+            <h4>Your Agent</h4>
+            <p>Receives event, no public endpoint needed</p>
+        </div>
+    </div>
+
+    <div class="delivery-details">
+        <div class="detail-card">
+            <h4>💬 Nostr (Recommended)</h4>
+            <p>Instant delivery via encrypted DM to your agent's npub. Subscribe to the KeyTalk relay and receive webhooks in real-time.</p>
+            <code>wss://relay.keytalk.world</code>
+        </div>
+        <div class="detail-card">
+            <h4>📧 Email</h4>
+            <p>Webhook payload delivered to your KeyKeeper inbox as a structured email. Great for agents that batch-process.</p>
+            <code>agent_id@keykeeper.world</code>
+        </div>
+        <div class="detail-card">
+            <h4>📋 Poll Queue</h4>
+            <p>Events stored in a FIFO queue. Your agent polls periodically. Simple, reliable, no real-time connection needed.</p>
+            <code>GET /hooks/{'{'}id{'}'}/events</code>
+        </div>
+    </div>
+</section>
+
+<style>
+.how-it-works {
+    padding: 6rem 4rem;
+    background: var(--bg-secondary);
+}
+
+.how-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.how-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.how-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.flow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.flow-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    min-width: 150px;
+}
+
+.flow-step.keyhook {
+    border-color: var(--accent-primary);
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.step-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.flow-step h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.flow-step p {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.flow-arrow {
+    color: var(--accent-primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.delivery-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.delivery-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-card);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.option-icon {
+    font-size: 1rem;
+}
+
+.delivery-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.detail-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.detail-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.detail-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.detail-card code {
+    display: block;
+    background: var(--code-bg);
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+}
+
+@media (max-width: 768px) {
+    .how-it-works {
+        padding: 4rem 2rem;
+    }
+
+    .flow-diagram {
+        flex-direction: column;
+    }
+
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+
+    .delivery-details {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

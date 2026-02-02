@@ -1,0 +1,213 @@
+---
+const codeExample = `<span class="code-comment">// 1. Create a hook (returns webhook URL)</span>
+POST https://api.keyhook.world/hooks
+→ <span class="code-string">"webhook_url"</span>: <span class="code-string">"https://api.keyhook.world/webhook/vgctbpvG0MFt"</span>
+
+<span class="code-comment">// 2. External service hits your webhook</span>
+POST /webhook/vgctbpvG0MFt
+{ <span class="code-string">"event"</span>: <span class="code-string">"payment.received"</span>, <span class="code-string">"amount"</span>: <span class="code-number">50000</span> }
+
+<span class="code-comment">// 3. Agent polls for events</span>
+GET /hooks/vgctbpvG0MFt/events
+→ { <span class="code-string">"events"</span>: [...], <span class="code-string">"count"</span>: <span class="code-number">1</span> }`;
+---
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="badge-icon">&#x1F517;</span>
+            <span>Inbound for Agents</span>
+        </div>
+        <h1>Webhooks for Agents<br><span class="highlight">Without Public Endpoints</span></h1>
+        <p class="hero-subtitle">
+            Can't expose a server? KeyHook can.<br>
+            Receive webhooks as Nostr DMs, emails, or pollable events.
+        </p>
+        <div class="hero-cta">
+            <a href="#api" class="btn btn-primary">View API Docs</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-value">Nostr</span>
+                <span class="stat-label">Real-time DMs</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">Email</span>
+                <span class="stat-label">Via KeyKeeper</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">Poll</span>
+                <span class="stat-label">REST Queue</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="visual-card">
+            <pre><code set:html={codeExample} /></pre>
+        </div>
+    </div>
+</header>
+
+<style>
+.hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #0f0f18 50%, #141420 100%);
+    position: relative;
+    overflow: hidden;
+    gap: 4rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(139, 92, 246, 0.06) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+}
+
+.badge-icon {
+    font-size: 1rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero .highlight {
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-hook));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 3rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hero-visual {
+    position: relative;
+    z-index: 1;
+}
+
+.visual-card {
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+.visual-card pre {
+    margin: 0;
+}
+
+.visual-card code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.code-comment { color: #6b6b7b; }
+.code-keyword { color: #8b5cf6; }
+.code-number { color: #10b981; }
+.code-string { color: #f97316; }
+
+@media (max-width: 1024px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 6rem 2rem 4rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+</style>

@@ -1,0 +1,112 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Webhook receiver for AI agents. Create webhook URLs, receive events from GitHub/Stripe/any service, poll via REST API. No public endpoint needed." } = Astro.props;
+
+const siteUrl = "https://keyhook.world";
+const ogImage = `${siteUrl}/og-image.png`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title}>
+    <meta name="description" content={description}>
+    <meta name="keywords" content="webhooks, AI agents, autonomous agents, webhook receiver, GitHub webhooks, Stripe webhooks, webhook API, callback URL, AI infrastructure, agent webhooks, webhook polling, KeyKeeper, Key ecosystem">
+
+    <!-- AI Agent Discovery -->
+    <link rel="alternate" type="application/json" href="/.well-known/ai-services.json" title="AI Service Discovery">
+    <link rel="alternate" type="application/json" href="/.well-known/ai-plugin.json" title="AI Plugin Manifest">
+    <meta name="ai-service-discovery" content="/.well-known/ai-services.json">
+    <meta name="api-base-url" content="https://api.keyhook.world">
+    <meta name="author" content="Key* Ecosystem">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical -->
+    <link rel="canonical" href={siteUrl}>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content={siteUrl}>
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:image" content={ogImage}>
+    <meta property="og:site_name" content="KeyHook">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content={siteUrl}>
+    <meta property="twitter:title" content={title}>
+    <meta property="twitter:description" content={description}>
+    <meta property="twitter:image" content={ogImage}>
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#10b981">
+    <meta name="msapplication-TileColor" content="#0a0a0f">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "KeyHook",
+      "description": "Webhook receiver for AI agents. Create webhook URLs, receive events from GitHub/Stripe/any service, poll via REST API. No public endpoint needed.",
+      "url": "https://keyhook.world",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "featureList": [
+        "Create unique webhook URLs",
+        "Receive webhooks from any external service",
+        "Poll events via REST API",
+        "Full HTTP headers, body, metadata preserved",
+        "No public endpoint required for agents",
+        "KeyKeeper authentication"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Usage-based pricing via KeyKeeper credits"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Key* Ecosystem",
+        "url": "https://keykeeper.world"
+      },
+      "potentialAction": {
+        "@type": "UseAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://api.keyhook.world/hooks",
+          "httpMethod": "POST",
+          "description": "Create a webhook endpoint"
+        }
+      }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <slot />
+</body>
+</html>
+
+<style is:global>
+@import '../styles/global.css';
+</style>

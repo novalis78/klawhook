@@ -1,0 +1,279 @@
+---
+const endpoints = [
+    {
+        method: 'POST',
+        path: '/hooks',
+        title: 'Create Hook',
+        description: 'Create a new webhook endpoint for your agent. Returns a unique webhook URL that external services can POST to.',
+        request: `curl -X POST https://api.keyhook.world/hooks \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "name": "github-events",
+    "description": "GitHub webhook receiver",
+    "delivery_method": "poll"
+  }'`,
+        response: `{
+  "id": "vgctbpvG0MFt",
+  "webhook_url": "https://api.keyhook.world/webhook/vgctbpvG0MFt",
+  "name": "github-events",
+  "delivery_method": "poll",
+  "created_at": "2025-12-03T15:30:00Z"
+}`
+    },
+    {
+        method: 'GET',
+        path: '/hooks',
+        title: 'List Hooks',
+        description: 'List all webhook endpoints you have created. Shows event counts and last triggered timestamps.',
+        request: `curl https://api.keyhook.world/hooks \\
+  -H "Authorization: Bearer YOUR_API_KEY"`,
+        response: `{
+  "hooks": [
+    {
+      "id": "vgctbpvG0MFt",
+      "webhook_url": "https://api.keyhook.world/webhook/vgctbpvG0MFt",
+      "name": "github-events",
+      "event_count": 42,
+      "last_triggered_at": "2025-12-03T22:33:01Z"
+    }
+  ]
+}`
+    },
+    {
+        method: 'GET',
+        path: '/hooks/{id}/events',
+        title: 'Poll Events',
+        description: 'Retrieve webhook events. Use ?undelivered=true for new events only.',
+        request: `curl https://api.keyhook.world/hooks/vgctbpvG0MFt/events \\
+  -H "Authorization: Bearer YOUR_API_KEY"`,
+        response: `{
+  "events": [
+    {
+      "id": "evt_1a2b3c",
+      "method": "POST",
+      "headers": { "content-type": "application/json" },
+      "body": { "event": "push", "repo": "owner/repo" },
+      "received_at": "2025-12-03T15:30:00Z"
+    }
+  ],
+  "count": 1,
+  "has_more": false
+}`
+    },
+    {
+        method: 'POST',
+        path: '/webhook/{id}',
+        title: 'Receive Webhook',
+        description: 'Public endpoint for external services. No authentication required.',
+        request: `curl -X POST https://api.keyhook.world/webhook/vgctbpvG0MFt \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "event": "push",
+    "repository": "owner/repo"
+  }'`,
+        response: `{
+  "received": true,
+  "event_id": "evt_4d5e6f"
+}`
+    },
+    {
+        method: 'DELETE',
+        path: '/hooks/{id}',
+        title: 'Delete Hook',
+        description: 'Remove a webhook endpoint and all its events.',
+        request: `curl -X DELETE https://api.keyhook.world/hooks/vgctbpvG0MFt \\
+  -H "Authorization: Bearer YOUR_API_KEY"`,
+        response: `{
+  "success": true,
+  "message": "Webhook deleted"
+}`
+    }
+];
+---
+
+<section id="api" class="api-section">
+    <div class="api-header">
+        <h2>API Reference</h2>
+        <p>Simple REST API. Create hooks, poll events, done.</p>
+        <div class="api-badges">
+            <span class="badge">Base URL: https://api.keyhook.world</span>
+            <span class="badge">Auth: Bearer Token</span>
+        </div>
+    </div>
+
+    <div class="api-endpoints">
+        {endpoints.map((endpoint) => (
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class={`method ${endpoint.method.toLowerCase()}`}>{endpoint.method}</span>
+                    <code>{endpoint.path}</code>
+                </div>
+                <h3>{endpoint.title}</h3>
+                <p>{endpoint.description}</p>
+                <div class="code-tabs">
+                    <div class="code-block request">
+                        <span class="code-label">Request</span>
+                        <pre><code>{endpoint.request}</code></pre>
+                    </div>
+                    <div class="code-block response">
+                        <span class="code-label">Response</span>
+                        <pre><code>{endpoint.response}</code></pre>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+.api-section {
+    padding: 6rem 4rem;
+}
+
+.api-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.api-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.api-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.api-badges {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.api-endpoints {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.endpoint {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.endpoint-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.method {
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.method.post {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-primary);
+}
+
+.method.get {
+    background: rgba(139, 92, 246, 0.15);
+    color: var(--accent-hook);
+}
+
+.method.delete {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.endpoint-header code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.endpoint h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.endpoint > p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.code-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.code-block {
+    background: var(--code-bg);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.code-label {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.code-block pre {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.code-block code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.code-block.response {
+    border-left: 3px solid var(--accent-primary);
+}
+
+@media (max-width: 768px) {
+    .api-section {
+        padding: 4rem 2rem;
+    }
+
+    .code-tabs {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

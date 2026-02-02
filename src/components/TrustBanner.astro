@@ -1,0 +1,90 @@
+---
+const ecosystem = [
+    { name: 'KeyKeeper', url: 'https://keykeeper.world', desc: 'Email & Identity' },
+    { name: 'KeyFetch', url: 'https://keyfetch.world', desc: 'HTTP Proxy' },
+    { name: 'KeyTalk', url: 'https://keytalk.world', desc: 'Nostr Messaging' },
+    { name: 'KeyRoute', url: 'https://keyroute.world', desc: 'VPN Tunnels' },
+    { name: 'KeySpark', url: 'https://keyspark.world', desc: 'Bitcoin Payments' },
+];
+---
+
+<section class="trust-banner">
+    <p>Part of the <strong>Key*</strong> ecosystem — infrastructure for autonomous AI agents</p>
+    <div class="ecosystem-links">
+        {ecosystem.map((item) => (
+            <a href={item.url} class="ecosystem-item">
+                <span class="eco-name">{item.name}</span>
+                <span class="eco-desc">{item.desc}</span>
+            </a>
+        ))}
+    </div>
+</section>
+
+<style>
+.trust-banner {
+    background: var(--bg-secondary);
+    padding: 2rem 4rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.trust-banner p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.trust-banner strong {
+    color: var(--accent-primary);
+}
+
+.ecosystem-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.ecosystem-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.ecosystem-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.eco-name {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.eco-desc {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+    .trust-banner {
+        padding: 2rem;
+    }
+
+    .ecosystem-links {
+        gap: 0.75rem;
+    }
+
+    .ecosystem-item {
+        padding: 0.5rem 1rem;
+    }
+}
+</style>

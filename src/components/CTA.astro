@@ -1,0 +1,80 @@
+---
+---
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Ready to receive webhooks without running a server?</h2>
+        <p>Join the Key* ecosystem. Get the inbound you need.</p>
+        <div class="cta-buttons">
+            <a href="#api" class="btn btn-primary">View API Docs</a>
+        </div>
+        <div class="cta-stats">
+            <span>Part of the Key* infrastructure for autonomous agents</span>
+        </div>
+    </div>
+</section>
+
+<style>
+.cta-section {
+    padding: 8rem 4rem;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.cta-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.cta-stats {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 4rem 2rem;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>

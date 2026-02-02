@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "name": "KeyHook Webhook Receiver",
+  "description": "Webhook receiver for autonomous AI agents. Create webhook URLs, receive events from external services, poll for events via REST API.",
+  "version": "1.0.0",
+  "homepage": "https://keyhook.world",
+  "documentation": "https://keyhook.world/#api",
+  "contact": {
+    "email": "support@keyhook.world",
+    "url": "https://keyhook.world"
+  },
+  "capabilities": {
+    "webhook_receiver": {
+      "description": "Create unique webhook URLs that external services can POST to",
+      "use_cases": [
+        "Receive GitHub webhooks (push, PR, issues)",
+        "Receive Stripe payment notifications",
+        "Receive any HTTP callback from external services",
+        "Bridge webhooks to agents without public endpoints"
+      ]
+    },
+    "event_polling": {
+      "description": "Poll for received webhook events via REST API",
+      "features": [
+        "Filter by undelivered events only",
+        "Auto-mark events as delivered",
+        "Full headers, body, and metadata preserved"
+      ]
+    },
+    "authentication": {
+      "methods": ["Bearer Token"],
+      "provider": "KeyKeeper (keykeeper.world)",
+      "note": "Use your KeyKeeper API token"
+    }
+  },
+  "quick_start": {
+    "description": "3-step flow to receive webhooks",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Create a hook",
+        "method": "POST",
+        "endpoint": "https://api.keyhook.world/hooks",
+        "headers": {
+          "Authorization": "Bearer YOUR_KEYKEEPER_TOKEN",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "name": "my-webhook",
+          "delivery_method": "poll"
+        },
+        "returns": "webhook_url - give this URL to external services"
+      },
+      {
+        "step": 2,
+        "action": "External service sends webhook",
+        "method": "POST",
+        "endpoint": "https://api.keyhook.world/webhook/{hook_id}",
+        "note": "No auth required - this is the public endpoint for external services"
+      },
+      {
+        "step": 3,
+        "action": "Poll for events",
+        "method": "GET",
+        "endpoint": "https://api.keyhook.world/hooks/{hook_id}/events",
+        "headers": {
+          "Authorization": "Bearer YOUR_KEYKEEPER_TOKEN"
+        },
+        "query_params": {
+          "undelivered": "true (optional) - only return new events",
+          "limit": "50 (optional) - max events to return"
+        },
+        "returns": "Array of events with method, headers, body, received_at"
+      }
+    ]
+  },
+  "api": {
+    "base_url": "https://api.keyhook.world",
+    "authentication": "Bearer token in Authorization header",
+    "endpoints": {
+      "create_hook": {
+        "method": "POST",
+        "path": "/hooks",
+        "auth_required": true,
+        "description": "Create a new webhook endpoint"
+      },
+      "list_hooks": {
+        "method": "GET",
+        "path": "/hooks",
+        "auth_required": true,
+        "description": "List all your webhook endpoints"
+      },
+      "get_hook": {
+        "method": "GET",
+        "path": "/hooks/{id}",
+        "auth_required": true,
+        "description": "Get details of a specific hook"
+      },
+      "delete_hook": {
+        "method": "DELETE",
+        "path": "/hooks/{id}",
+        "auth_required": true,
+        "description": "Delete a webhook endpoint"
+      },
+      "poll_events": {
+        "method": "GET",
+        "path": "/hooks/{id}/events",
+        "auth_required": true,
+        "description": "Retrieve webhook events"
+      },
+      "receive_webhook": {
+        "method": "POST",
+        "path": "/webhook/{id}",
+        "auth_required": false,
+        "description": "Public endpoint for external services to send webhooks"
+      }
+    }
+  },
+  "pricing": {
+    "model": "Usage-based via KeyKeeper",
+    "note": "Webhook operations consume KeyKeeper credits"
+  },
+  "ecosystem": {
+    "part_of": "Key* Ecosystem",
+    "related_services": [
+      {
+        "name": "KeyKeeper",
+        "url": "https://keykeeper.world",
+        "description": "Authentication, email, and Nostr messaging for AI agents"
+      },
+      {
+        "name": "KeyFetch",
+        "url": "https://keyfetch.world",
+        "description": "HTTP proxy for outbound requests"
+      },
+      {
+        "name": "KeyRoute",
+        "url": "https://keyroute.world",
+        "description": "VPN tunnels for geo-routing"
+      },
+      {
+        "name": "KeySpark",
+        "url": "https://keyspark.world",
+        "description": "Job marketplace for AI agents"
+      }
+    ]
+  }
+}

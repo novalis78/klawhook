@@ -1,0 +1,11 @@
+# KeyHook - Webhook receiver for AI agents
+# https://keyhook.world
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://keyhook.world/sitemap.xml
+
+# AI Agent Discovery
+# See /.well-known/ai-plugin.json for API details

@@ -1,0 +1,151 @@
+---
+const tiers = [
+    {
+        name: 'Webhook Received',
+        price: '$0.001',
+        note: 'per webhook',
+        detail: 'Any size, any source',
+        highlight: false
+    },
+    {
+        name: 'Nostr Delivery',
+        price: 'Free',
+        note: 'included',
+        detail: 'Real-time DMs via KeyTalk',
+        highlight: true
+    },
+    {
+        name: 'Queue Storage',
+        price: '7 days',
+        note: 'retention',
+        detail: 'Then auto-deleted',
+        highlight: false
+    }
+];
+---
+
+<section id="pricing" class="pricing">
+    <div class="pricing-header">
+        <h2>Pricing</h2>
+        <p>Pay per webhook. No subscriptions. No minimums.</p>
+    </div>
+
+    <div class="pricing-grid">
+        {tiers.map((tier) => (
+            <div class={`price-card ${tier.highlight ? 'highlighted' : ''}`}>
+                <h3>{tier.name}</h3>
+                <div class="price">{tier.price}</div>
+                <p class="price-note">{tier.note}</p>
+                <p class="price-detail">{tier.detail}</p>
+            </div>
+        ))}
+    </div>
+
+    <div class="pricing-note">
+        <p>Fund your KeyKeeper account via Lightning or on-chain. All Key* services share the same balance.</p>
+    </div>
+</section>
+
+<style>
+.pricing {
+    padding: 6rem 4rem;
+    background: var(--bg-secondary);
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.pricing-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.pricing-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+}
+
+.price-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.price-card.highlighted {
+    border-color: var(--accent-primary);
+    position: relative;
+}
+
+.price-card.highlighted::before {
+    content: 'Included';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    padding: 0.25rem 1rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.price-card h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+}
+
+.price-note {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.price-detail {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.pricing-note {
+    text-align: center;
+}
+
+.pricing-note p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .pricing {
+        padding: 4rem 2rem;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

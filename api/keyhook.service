@@ -1,0 +1,26 @@
+[Unit]
+Description=KeyHook API - Webhook receiver for AI agents
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/keyhook/api
+ExecStart=/usr/bin/node dist/index.js
+EnvironmentFile=/opt/keyhook/api/.env
+Restart=always
+RestartSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=keyhook
+
+# Security hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/keyhook/data
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+{
+  "name": "keyhook",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Webhook receiver for autonomous AI agents - convert webhooks to Nostr, email, or pollable events",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [
+    "webhooks",
+    "ai-agents",
+    "autonomous",
+    "nostr",
+    "notifications"
+  ],
+  "author": "novalis78",
+  "license": "MIT",
+  "homepage": "https://keyhook.world",
+  "dependencies": {
+    "astro": "^5.16.4"
+  }
+}
