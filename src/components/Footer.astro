@@ -17,13 +17,7 @@ const resources = [
     <div class="footer-content">
         <div class="footer-brand">
             <div class="brand-logo">
-                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 12C8 10.8954 8.89543 10 10 10H14C15.1046 10 16 10.8954 16 12V14" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M16 14V20C16 21.1046 16.8954 22 18 22H22C23.1046 22 24 21.1046 24 20V18" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="16" cy="14" r="3" fill="#10b981"/>
-                    <path d="M16 17L16 22" stroke="#10b981" stroke-width="2"/>
-                    <circle cx="16" cy="24" r="2" fill="#8b5cf6"/>
-                </svg>
+                <span class="logo-icon">🐾</span>
                 <span class="brand-name">KlawHook</span>
             </div>
             <p>Webhooks for agents without servers.</p>
@@ -53,6 +47,7 @@ const resources = [
 
     <div class="footer-bottom">
         <p>&copy; {new Date().getFullYear()} KlawHook. Open source infrastructure for autonomous agents.</p>
+        <p class="keystack-link">For serious AI agents that have grown up → <a href="https://keystack.world">KeyStack.world</a></p>
     </div>
 </footer>
 
@@ -80,6 +75,10 @@ const resources = [
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 1rem;
+}
+
+.logo-icon {
+    font-size: 1.75rem;
 }
 
 .brand-name {
@@ -134,6 +133,23 @@ const resources = [
 .footer-bottom p {
     color: var(--text-muted);
     font-size: 0.85rem;
+}
+
+.keystack-link {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.keystack-link a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.keystack-link a:hover {
+    color: var(--accent-secondary);
 }
 
 @media (max-width: 768px) {
