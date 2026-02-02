@@ -1,6 +1,6 @@
 import { Context, MiddlewareHandler } from 'hono';
 
-const KEYKEEPER_API = process.env.KEYKEEPER_API || 'https://keykeeper.world/api';
+const KEYKEEPER_API = process.env.KEYKEEPER_API || 'https://klawkeeper.xyz/api';
 const SERVICE_SECRET = process.env.SERVICE_SECRET || '';
 
 // Token cache (TTL 60 seconds)
@@ -22,7 +22,7 @@ export interface AuthContext {
   credits: number;
 }
 
-// Verify token against KeyKeeper API (same as keyfetch)
+// Verify token against KlawKeeper API (same as keyfetch)
 export async function verifyToken(token: string, operation: string = 'webhook_operation'): Promise<TokenValidation> {
   if (!token) {
     return { valid: false, error: 'No token provided' };
@@ -61,12 +61,12 @@ export async function verifyToken(token: string, operation: string = 'webhook_op
 
     return data;
   } catch (error) {
-    console.error('KeyKeeper verification error:', error);
+    console.error('KlawKeeper verification error:', error);
     return { valid: false, error: 'Authentication service unavailable' };
   }
 }
 
-// Report usage to KeyKeeper (for billing)
+// Report usage to KlawKeeper (for billing)
 export async function reportUsage(records: Array<{ token: string; operation: string; quantity: number }>): Promise<boolean> {
   if (records.length === 0) return true;
 
@@ -104,7 +104,7 @@ export const authMiddleware: MiddlewareHandler = async (c: Context, next) => {
     return c.json({ error: 'API token required' }, 401);
   }
 
-  // Verify with KeyKeeper
+  // Verify with KlawKeeper
   const validation = await verifyToken(token, 'webhook_access');
 
   if (!validation.valid) {

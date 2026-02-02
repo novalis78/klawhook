@@ -5,7 +5,7 @@ const endpoints = [
         path: '/hooks',
         title: 'Create Hook',
         description: 'Create a new webhook endpoint for your agent. Returns a unique webhook URL that external services can POST to.',
-        request: `curl -X POST https://api.keyhook.world/hooks \\
+        request: `curl -X POST https://api.klawhook.xyz/hooks \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -15,7 +15,7 @@ const endpoints = [
   }'`,
         response: `{
   "id": "vgctbpvG0MFt",
-  "webhook_url": "https://api.keyhook.world/webhook/vgctbpvG0MFt",
+  "webhook_url": "https://api.klawhook.xyz/webhook/vgctbpvG0MFt",
   "name": "github-events",
   "delivery_method": "poll",
   "created_at": "2025-12-03T15:30:00Z"
@@ -26,13 +26,13 @@ const endpoints = [
         path: '/hooks',
         title: 'List Hooks',
         description: 'List all webhook endpoints you have created. Shows event counts and last triggered timestamps.',
-        request: `curl https://api.keyhook.world/hooks \\
+        request: `curl https://api.klawhook.xyz/hooks \\
   -H "Authorization: Bearer YOUR_API_KEY"`,
         response: `{
   "hooks": [
     {
       "id": "vgctbpvG0MFt",
-      "webhook_url": "https://api.keyhook.world/webhook/vgctbpvG0MFt",
+      "webhook_url": "https://api.klawhook.xyz/webhook/vgctbpvG0MFt",
       "name": "github-events",
       "event_count": 42,
       "last_triggered_at": "2025-12-03T22:33:01Z"
@@ -45,7 +45,7 @@ const endpoints = [
         path: '/hooks/{id}/events',
         title: 'Poll Events',
         description: 'Retrieve webhook events. Use ?undelivered=true for new events only.',
-        request: `curl https://api.keyhook.world/hooks/vgctbpvG0MFt/events \\
+        request: `curl https://api.klawhook.xyz/hooks/vgctbpvG0MFt/events \\
   -H "Authorization: Bearer YOUR_API_KEY"`,
         response: `{
   "events": [
@@ -66,7 +66,7 @@ const endpoints = [
         path: '/webhook/{id}',
         title: 'Receive Webhook',
         description: 'Public endpoint for external services. No authentication required.',
-        request: `curl -X POST https://api.keyhook.world/webhook/vgctbpvG0MFt \\
+        request: `curl -X POST https://api.klawhook.xyz/webhook/vgctbpvG0MFt \\
   -H "Content-Type: application/json" \\
   -d '{
     "event": "push",
@@ -82,7 +82,7 @@ const endpoints = [
         path: '/hooks/{id}',
         title: 'Delete Hook',
         description: 'Remove a webhook endpoint and all its events.',
-        request: `curl -X DELETE https://api.keyhook.world/hooks/vgctbpvG0MFt \\
+        request: `curl -X DELETE https://api.klawhook.xyz/hooks/vgctbpvG0MFt \\
   -H "Authorization: Bearer YOUR_API_KEY"`,
         response: `{
   "success": true,
@@ -97,7 +97,7 @@ const endpoints = [
         <h2>API Reference</h2>
         <p>Simple REST API. Create hooks, poll events, done.</p>
         <div class="api-badges">
-            <span class="badge">Base URL: https://api.keyhook.world</span>
+            <span class="badge">Base URL: https://api.klawhook.xyz</span>
             <span class="badge">Auth: Bearer Token</span>
         </div>
     </div>

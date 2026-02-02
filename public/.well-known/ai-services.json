@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "name": "KeyHook Webhook Receiver",
+  "name": "KlawHook Webhook Receiver",
   "description": "Webhook receiver for autonomous AI agents. Create webhook URLs, receive events from external services, poll for events via REST API.",
   "version": "1.0.0",
-  "homepage": "https://keyhook.world",
-  "documentation": "https://keyhook.world/#api",
+  "homepage": "https://klawhook.xyz",
+  "documentation": "https://klawhook.xyz/#api",
   "contact": {
-    "email": "support@keyhook.world",
-    "url": "https://keyhook.world"
+    "email": "support@klawhook.xyz",
+    "url": "https://klawhook.xyz"
   },
   "capabilities": {
     "webhook_receiver": {
@@ -29,8 +29,8 @@
     },
     "authentication": {
       "methods": ["Bearer Token"],
-      "provider": "KeyKeeper (keykeeper.world)",
-      "note": "Use your KeyKeeper API token"
+      "provider": "KlawKeeper (klawkeeper.xyz)",
+      "note": "Use your KlawKeeper API token"
     }
   },
   "quick_start": {
@@ -40,7 +40,7 @@
         "step": 1,
         "action": "Create a hook",
         "method": "POST",
-        "endpoint": "https://api.keyhook.world/hooks",
+        "endpoint": "https://api.klawhook.xyz/hooks",
         "headers": {
           "Authorization": "Bearer YOUR_KEYKEEPER_TOKEN",
           "Content-Type": "application/json"
@@ -55,14 +55,14 @@
         "step": 2,
         "action": "External service sends webhook",
         "method": "POST",
-        "endpoint": "https://api.keyhook.world/webhook/{hook_id}",
+        "endpoint": "https://api.klawhook.xyz/webhook/{hook_id}",
         "note": "No auth required - this is the public endpoint for external services"
       },
       {
         "step": 3,
         "action": "Poll for events",
         "method": "GET",
-        "endpoint": "https://api.keyhook.world/hooks/{hook_id}/events",
+        "endpoint": "https://api.klawhook.xyz/hooks/{hook_id}/events",
         "headers": {
           "Authorization": "Bearer YOUR_KEYKEEPER_TOKEN"
         },
@@ -75,7 +75,7 @@
     ]
   },
   "api": {
-    "base_url": "https://api.keyhook.world",
+    "base_url": "https://api.klawhook.xyz",
     "authentication": "Bearer token in Authorization header",
     "endpoints": {
       "create_hook": {
@@ -117,30 +117,30 @@
     }
   },
   "pricing": {
-    "model": "Usage-based via KeyKeeper",
-    "note": "Webhook operations consume KeyKeeper credits"
+    "model": "Usage-based via KlawKeeper",
+    "note": "Webhook operations consume KlawKeeper credits"
   },
   "ecosystem": {
     "part_of": "Key* Ecosystem",
     "related_services": [
       {
-        "name": "KeyKeeper",
-        "url": "https://keykeeper.world",
+        "name": "KlawKeeper",
+        "url": "https://klawkeeper.xyz",
         "description": "Authentication, email, and Nostr messaging for AI agents"
       },
       {
-        "name": "KeyFetch",
-        "url": "https://keyfetch.world",
+        "name": "KlawFetch",
+        "url": "https://klawfetch.xyz",
         "description": "HTTP proxy for outbound requests"
       },
       {
-        "name": "KeyRoute",
-        "url": "https://keyroute.world",
+        "name": "KlawRoute",
+        "url": "https://klawroute.xyz",
         "description": "VPN tunnels for geo-routing"
       },
       {
-        "name": "KeySpark",
-        "url": "https://keyspark.world",
+        "name": "KlawSpark",
+        "url": "https://klawspark.xyz",
         "description": "Job marketplace for AI agents"
       }
     ]

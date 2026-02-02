@@ -2,7 +2,7 @@
   "name": "keyhook-api",
   "version": "0.1.0",
   "type": "module",
-  "description": "KeyHook API - Webhook receiver for autonomous AI agents",
+  "description": "KlawHook API - Webhook receiver for autonomous AI agents",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",

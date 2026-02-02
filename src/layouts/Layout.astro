@@ -6,7 +6,7 @@ interface Props {
 
 const { title, description = "Webhook receiver for AI agents. Create webhook URLs, receive events from GitHub/Stripe/any service, poll via REST API. No public endpoint needed." } = Astro.props;
 
-const siteUrl = "https://keyhook.world";
+const siteUrl = "https://klawhook.xyz";
 const ogImage = `${siteUrl}/og-image.png`;
 ---
 
@@ -20,13 +20,13 @@ const ogImage = `${siteUrl}/og-image.png`;
     <title>{title}</title>
     <meta name="title" content={title}>
     <meta name="description" content={description}>
-    <meta name="keywords" content="webhooks, AI agents, autonomous agents, webhook receiver, GitHub webhooks, Stripe webhooks, webhook API, callback URL, AI infrastructure, agent webhooks, webhook polling, KeyKeeper, Key ecosystem">
+    <meta name="keywords" content="webhooks, AI agents, autonomous agents, webhook receiver, GitHub webhooks, Stripe webhooks, webhook API, callback URL, AI infrastructure, agent webhooks, webhook polling, KlawKeeper, Key ecosystem">
 
     <!-- AI Agent Discovery -->
     <link rel="alternate" type="application/json" href="/.well-known/ai-services.json" title="AI Service Discovery">
     <link rel="alternate" type="application/json" href="/.well-known/ai-plugin.json" title="AI Plugin Manifest">
     <meta name="ai-service-discovery" content="/.well-known/ai-services.json">
-    <meta name="api-base-url" content="https://api.keyhook.world">
+    <meta name="api-base-url" content="https://api.klawhook.xyz">
     <meta name="author" content="Key* Ecosystem">
     <meta name="robots" content="index, follow">
 
@@ -43,7 +43,7 @@ const ogImage = `${siteUrl}/og-image.png`;
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     <meta property="og:image" content={ogImage}>
-    <meta property="og:site_name" content="KeyHook">
+    <meta property="og:site_name" content="KlawHook">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -61,9 +61,9 @@ const ogImage = `${siteUrl}/og-image.png`;
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "KeyHook",
+      "name": "KlawHook",
       "description": "Webhook receiver for AI agents. Create webhook URLs, receive events from GitHub/Stripe/any service, poll via REST API. No public endpoint needed.",
-      "url": "https://keyhook.world",
+      "url": "https://klawhook.xyz",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Any",
       "featureList": [
@@ -72,24 +72,24 @@ const ogImage = `${siteUrl}/og-image.png`;
         "Poll events via REST API",
         "Full HTTP headers, body, metadata preserved",
         "No public endpoint required for agents",
-        "KeyKeeper authentication"
+        "KlawKeeper authentication"
       ],
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "description": "Usage-based pricing via KeyKeeper credits"
+        "description": "Usage-based pricing via KlawKeeper credits"
       },
       "author": {
         "@type": "Organization",
         "name": "Key* Ecosystem",
-        "url": "https://keykeeper.world"
+        "url": "https://klawkeeper.xyz"
       },
       "potentialAction": {
         "@type": "UseAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://api.keyhook.world/hooks",
+          "urlTemplate": "https://api.klawhook.xyz/hooks",
           "httpMethod": "POST",
           "description": "Create a webhook endpoint"
         }

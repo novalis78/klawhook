@@ -32,7 +32,7 @@ hooks.post('/', async (c) => {
       deliveryConfig
     );
 
-    const webhookUrl = `${process.env.PUBLIC_URL || 'https://api.keyhook.world'}/webhook/${hookId}`;
+    const webhookUrl = `${process.env.PUBLIC_URL || 'https://api.klawhook.xyz'}/webhook/${hookId}`;
 
     return c.json({
       id: hookId,
@@ -54,7 +54,7 @@ hooks.get('/', (c) => {
 
   try {
     const hooksList = statements.getHooksByApiKey.all(auth.token) as Hook[];
-    const publicUrl = process.env.PUBLIC_URL || 'https://api.keyhook.world';
+    const publicUrl = process.env.PUBLIC_URL || 'https://api.klawhook.xyz';
 
     return c.json({
       hooks: hooksList.map((hook) => ({
@@ -90,7 +90,7 @@ hooks.get('/:id', (c) => {
       return c.json({ error: 'Unauthorized' }, 403);
     }
 
-    const publicUrl = process.env.PUBLIC_URL || 'https://api.keyhook.world';
+    const publicUrl = process.env.PUBLIC_URL || 'https://api.klawhook.xyz';
 
     return c.json({
       id: hook.id,

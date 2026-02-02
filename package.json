@@ -1,5 +1,5 @@
 {
-  "name": "keyhook",
+  "name": "klawhook",
   "version": "0.1.0",
   "type": "module",
   "description": "Webhook receiver for autonomous AI agents - convert webhooks to Nostr, email, or pollable events",
@@ -17,7 +17,7 @@
   ],
   "author": "novalis78",
   "license": "MIT",
-  "homepage": "https://keyhook.world",
+  "homepage": "https://klawhook.xyz",
   "dependencies": {
     "astro": "^5.16.4"
   }

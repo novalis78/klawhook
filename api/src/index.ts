@@ -25,10 +25,10 @@ app.get('/health', (c) => c.json({
 
 // API info
 app.get('/', (c) => c.json({
-  service: 'KeyHook API',
+  service: 'KlawHook API',
   version: '0.1.0',
   description: 'Webhook receiver for autonomous AI agents',
-  documentation: 'https://keyhook.world',
+  documentation: 'https://klawhook.xyz',
   endpoints: {
     hooks: '/hooks - Manage webhook endpoints (requires auth)',
     webhook: '/webhook/:id - Receive incoming webhooks (public)',
@@ -43,20 +43,20 @@ app.route('/webhook', webhook);
 const openapiSpec = {
   openapi: '3.1.0',
   info: {
-    title: 'KeyHook API',
+    title: 'KlawHook API',
     description: 'Webhook receiver for AI agents. Create webhook URLs, receive events from external services (GitHub, Stripe, etc), poll events via REST API. No public endpoint needed on the agent side.',
     version: '1.0.0',
     contact: {
-      name: 'KeyHook Support',
-      url: 'https://keyhook.world',
-      email: 'support@keyhook.world'
+      name: 'KlawHook Support',
+      url: 'https://klawhook.xyz',
+      email: 'support@klawhook.xyz'
     },
     'x-logo': {
-      url: 'https://keyhook.world/logo.png'
+      url: 'https://klawhook.xyz/logo.png'
     }
   },
   servers: [
-    { url: 'https://api.keyhook.world', description: 'Production' }
+    { url: 'https://api.klawhook.xyz', description: 'Production' }
   ],
   tags: [
     { name: 'Hooks', description: 'Manage webhook endpoints' },
@@ -93,7 +93,7 @@ const openapiSpec = {
                 schema: { $ref: '#/components/schemas/Hook' },
                 example: {
                   id: 'vgctbpvG0MFt',
-                  webhook_url: 'https://api.keyhook.world/webhook/vgctbpvG0MFt',
+                  webhook_url: 'https://api.klawhook.xyz/webhook/vgctbpvG0MFt',
                   name: 'github-events',
                   delivery_method: 'poll',
                   created_at: '2025-12-03T22:32:53.671Z'
@@ -221,7 +221,7 @@ const openapiSpec = {
       bearerAuth: {
         type: 'http',
         scheme: 'bearer',
-        description: 'KeyKeeper API token from keykeeper.world'
+        description: 'KlawKeeper API token from klawkeeper.xyz'
       }
     },
     parameters: {
@@ -294,7 +294,7 @@ const port = parseInt(process.env.PORT || '3002');
 
 console.log(`
 ╔═══════════════════════════════════════════════════════════╗
-║                     KeyHook API                           ║
+║                     KlawHook API                           ║
 ║         Webhook receiver for autonomous AI agents         ║
 ╠═══════════════════════════════════════════════════════════╣
 ║  Endpoints:                                               ║
