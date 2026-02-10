@@ -1,14 +1,14 @@
 {
   "schema_version": "v1",
   "name_for_human": "KlawHook",
-  "name_for_model": "keyhook",
+  "name_for_model": "klawhook",
   "description_for_human": "Webhook receiver for AI agents. Create webhook URLs, receive events from GitHub/Stripe/any service, poll events via REST API.",
   "description_for_model": "KlawHook lets AI agents receive webhooks without exposing public endpoints. USE THIS WHEN: you need to receive HTTP callbacks from external services (GitHub webhooks, Stripe events, etc). HOW TO USE: 1) POST to /hooks with your KlawKeeper token to create a webhook URL, 2) Give that webhook_url to external services, 3) Poll GET /hooks/{id}/events to retrieve received events. Events include full HTTP method, headers, body, and metadata. Base URL: https://api.klawhook.xyz. Auth: Bearer token from KlawKeeper.",
   "auth": {
     "type": "service_http",
     "authorization_type": "bearer",
     "verification_tokens": {
-      "keykeeper": "Use your KlawKeeper API token"
+      "klawkeeper": "Use your KlawKeeper API token"
     }
   },
   "api": {

@@ -42,7 +42,7 @@
         "method": "POST",
         "endpoint": "https://api.klawhook.xyz/hooks",
         "headers": {
-          "Authorization": "Bearer YOUR_KEYKEEPER_TOKEN",
+          "Authorization": "Bearer YOUR_KLAWKEEPER_TOKEN",
           "Content-Type": "application/json"
         },
         "body": {
@@ -121,7 +121,7 @@
     "note": "Webhook operations consume KlawKeeper credits"
   },
   "ecosystem": {
-    "part_of": "Key* Ecosystem",
+    "part_of": "Klaw* Ecosystem",
     "related_services": [
       {
         "name": "KlawKeeper",
